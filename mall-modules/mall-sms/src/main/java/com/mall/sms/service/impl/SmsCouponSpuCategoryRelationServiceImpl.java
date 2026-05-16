@@ -1,0 +1,93 @@
+package com.mall.sms.service.impl;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.mall.sms.mapper.SmsCouponSpuCategoryRelationMapper;
+import com.mall.sms.domain.SmsCouponSpuCategoryRelation;
+import com.mall.sms.service.ISmsCouponSpuCategoryRelationService;
+
+/**
+ * 优惠券分类关联Service业务层处理
+ * 
+ * @author mall
+ * @date 2026-04-11
+ */
+@Service
+public class SmsCouponSpuCategoryRelationServiceImpl implements ISmsCouponSpuCategoryRelationService 
+{
+    @Autowired
+    private SmsCouponSpuCategoryRelationMapper smsCouponSpuCategoryRelationMapper;
+
+    /**
+     * 查询优惠券分类关联
+     * 
+     * @param id 优惠券分类关联主键
+     * @return 优惠券分类关联
+     */
+    @Override
+    public SmsCouponSpuCategoryRelation selectSmsCouponSpuCategoryRelationById(Long id)
+    {
+        return smsCouponSpuCategoryRelationMapper.selectSmsCouponSpuCategoryRelationById(id);
+    }
+
+    /**
+     * 查询优惠券分类关联列表
+     * 
+     * @param smsCouponSpuCategoryRelation 优惠券分类关联
+     * @return 优惠券分类关联
+     */
+    @Override
+    public List<SmsCouponSpuCategoryRelation> selectSmsCouponSpuCategoryRelationList(SmsCouponSpuCategoryRelation smsCouponSpuCategoryRelation)
+    {
+        return smsCouponSpuCategoryRelationMapper.selectSmsCouponSpuCategoryRelationList(smsCouponSpuCategoryRelation);
+    }
+
+    /**
+     * 新增优惠券分类关联
+     * 
+     * @param smsCouponSpuCategoryRelation 优惠券分类关联
+     * @return 结果
+     */
+    @Override
+    public int insertSmsCouponSpuCategoryRelation(SmsCouponSpuCategoryRelation smsCouponSpuCategoryRelation)
+    {
+        return smsCouponSpuCategoryRelationMapper.insertSmsCouponSpuCategoryRelation(smsCouponSpuCategoryRelation);
+    }
+
+    /**
+     * 修改优惠券分类关联
+     * 
+     * @param smsCouponSpuCategoryRelation 优惠券分类关联
+     * @return 结果
+     */
+    @Override
+    public int updateSmsCouponSpuCategoryRelation(SmsCouponSpuCategoryRelation smsCouponSpuCategoryRelation)
+    {
+        return smsCouponSpuCategoryRelationMapper.updateSmsCouponSpuCategoryRelation(smsCouponSpuCategoryRelation);
+    }
+
+    /**
+     * 批量删除优惠券分类关联
+     * 
+     * @param ids 需要删除的优惠券分类关联主键
+     * @return 结果
+     */
+    @Override
+    public int deleteSmsCouponSpuCategoryRelationByIds(Long[] ids)
+    {
+        return smsCouponSpuCategoryRelationMapper.deleteSmsCouponSpuCategoryRelationByIds(ids);
+    }
+
+    /**
+     * 删除优惠券分类关联信息
+     * 
+     * @param id 优惠券分类关联主键
+     * @return 结果
+     */
+    @Override
+    public int deleteSmsCouponSpuCategoryRelationById(Long id)
+    {
+        return smsCouponSpuCategoryRelationMapper.deleteSmsCouponSpuCategoryRelationById(id);
+    }
+}

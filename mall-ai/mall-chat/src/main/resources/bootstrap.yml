@@ -1,0 +1,90 @@
+# Tomcat
+server:
+  port: 9994
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+
+# Spring
+spring:
+  #main:
+    #web-application-type: none
+  application:
+    # 应用名称
+    name: mall-chat
+  ai:
+    dashscope:
+      api-key: ${aliQwen-api}
+      chat:
+        options:
+          model: MiniMax-M2.5
+          multi-model: true
+    vectorstore:
+      weaviate:
+        host: 192.168.213.101:18080
+        scheme: http
+        api-key: WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
+    openai:
+      base-url: http://127.0.0.1:8080
+      api-key: 123456
+      embedding:
+        options:
+          model: Qwen3-Embedding-8B-Q5_K_M
+    mcp:
+      client:
+        enabled: true
+        name: ${spring.application.name}
+        version: 1.0.0
+        request-timeout: 600s
+        type: ASYNC  # or ASYNC for reactive applications
+#        sse:
+#          connections:
+#            gateway:
+#              url: http://localhost:9999  # 替换为实际 Gateway 地址
+        streamable-http:
+          connections:
+            gateway:
+              url: http://localhost:9999  # 替换为实际 Gateway 地址
+
+#    alibaba:
+#      mcp:
+#        nacos:
+#          client:
+#            enabled: true
+#            streamable:
+#              connections:
+#                server1:
+#                  service-name: mall-chat-mcp-server
+#                  version: 1.0.0
+#            configs:
+#              server1:
+#                server-addr: 192.168.213.101:8848
+#                username: nacos
+#                password: 123456
+  profiles:
+    # 环境配置
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 192.168.213.101:8848
+      config:
+        # 配置中心地址
+        server-addr: 192.168.213.101:8848
+  config:
+    # 配置文件格式
+    file-extension: yml
+    import:
+      - nacos:application-${spring.profiles.active}.${spring.config.file-extension}
+      - nacos:${spring.application.name}-${spring.profiles.active}.${spring.config.file-extension}
+
+
+logging:
+  level:
+    org.springframework.ai.mcp.client: DEBUG
+    org.springframework.web.client: DEBUG
+    org.springframework.ai.mcp: DEBUG
+    org.springframework.http.client: DEBUG
