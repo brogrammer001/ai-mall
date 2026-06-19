@@ -14,10 +14,10 @@ spring:
     nacos:
       discovery:
         # 服务注册地址
-        server-addr: 192.168.213.101:8848
+        server-addr: 127.0.0.1:8848
       config:
         # 配置中心地址
-        server-addr: 192.168.213.101:8848
+        server-addr: 127.0.0.1:8848
   config:
     # 配置文件格式
     file-extension: yml
@@ -27,7 +27,7 @@ spring:
   ai:
     vectorstore:
       weaviate:
-        host: 192.168.213.101:18080
+        host: 127.0.0.1:18080
         scheme: http
         api-key: WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
     model:

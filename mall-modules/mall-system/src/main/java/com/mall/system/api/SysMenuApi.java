@@ -2,7 +2,6 @@ package com.mall.system.api;
 
 import com.mall.common.core.domain.R;
 import com.mall.common.core.web.controller.BaseController;
-import com.mall.common.security.utils.SecurityUtils;
 import com.mall.system.domain.SysMenu;
 import com.mall.system.service.ISysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,6 @@ public class SysMenuApi extends BaseController {
     @PostMapping("/getMenuByParam")
     public R<List<SysMenu>> getMenuByParam(@RequestBody SysMenu menu) {
         Long userId = 1L;
-        Long userId2 = SecurityUtils.getUserId();
-
         List<SysMenu> menus = menuService.selectMenuList(menu, userId);
         return R.ok(menus);
     }
